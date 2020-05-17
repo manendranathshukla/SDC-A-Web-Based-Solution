@@ -7,6 +7,7 @@ It is a project for checking that the  people are following the social distancin
 - flask
 ## File Description
 `Image.py` it is a script that read the image and save the detected image.
+
 `app.py` it is file for webapp 
 ## How to run the app:
 `python3.x app.py` run this command on terminal start the webapp.
