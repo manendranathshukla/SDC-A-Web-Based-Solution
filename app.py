@@ -27,7 +27,7 @@ configPath = "./yolov3.cfg"
 net = cv2.dnn.readNetFromDarknet(configPath, weightsPath)
 ####
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder='F:/social2/templates')
 
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -62,15 +62,8 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('uploaded_file',
                                     filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+    return render_template('distancing-checker.html')
+    
 @app.route('/result/<filename>')
 def uploaded_file(filename):
     imgdir="F:/social2/image/"+filename

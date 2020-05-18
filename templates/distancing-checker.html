@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>distancing checker</title>
+    <style>
+          div.a{
+            text-align:center;
+            background-color:#ffffff;
+			width:
+        }
+        h1 {
+        color:black;
+        font-family: verdana;
+        font-size: 200%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h2 {
+        color:black;
+        font-family: verdana;
+        font-size: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.container img {vertical-align: middle;opacity: 0.3;width:100cm;}
+
+.container .content {
+  position: absolute;
+  bottom: 0;
+   
+  font-weight: bold;
+  width: 100%;
+  padding: 20px;
+}
+div.d{
+    font-size:xx-large;font-weight: bolder;color: green;text-align: center;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color:lightblue;
+  color:black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  
+}
+*{padding: 0; margin: 0; box-sizing: border-box;}
+body{height: 900px;}
+header {
+	background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+	text-align: center;
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 85% 85% / 30%;
+}
+header .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient( 135deg, blue 10%, #fd5e086b 100%);
+	
+}
+
+h1 {
+	font-family: 'Dancing Script', cursive;
+	font-size: 80px;
+	margin-bottom: 30px;
+}
+
+h3, p {
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 30px;
+}
+
+button {
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	border-radius: 50px;
+	color: #333;
+	background: #fff;
+	margin-bottom: 50px;
+	box-shadow: 0 3px 20px 0 #0000003b;
+}
+button:hover{
+	cursor: pointer;
+}
+.main-content {
+  min-height: 1000px; // just for this pen
+}
+
+.hero {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+  // needed to prevent janky scrolling in Safari
+  backface-visibility: hidden;
+  //100% height of the viewport
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	
+	
+	@media screen and (min-width:640px) {
+		background-position: 50% 0;
+	}
+
+	// Add a slight overlay on our image
+	&:after {
+		background-color: rgba(62,92,135,.5);
+		bottom: 0;
+		content: '';
+		left: -2000%;
+		position: absolute;
+		right: -2000%;
+		top: 0;
+		z-index: 1;
+	}
+}
+
+.hero-container {
+	box-sizing: border-box;
+	height: auto;
+	padding: 30px 50px;
+	position: relative;
+	z-index: 2;
+  
+  // set our fade for when the JS kicks in on scroll
+  -webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    -webkit-transition-duration: 1.2s;
+    transition-duration: 1.2s;
+	
+	@media screen and (min-width:640px) {
+		height: 100%;
+	}
+
+	p {
+		color: white;
+		font-family: $font-sans-serif;
+		font-size: 13px;
+    font-weight: bold;
+		letter-spacing: 6px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    text-align: left;
+	}
+}
+
+.hero-button {
+  background: rgba(255,255,255,0.8);
+  color: #44575b;
+  font-size: 24px;
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  padding: 20px 90px;
+  text-decoration: none;
+}
+
+.hero-title {
+	color: black;
+	font-family: "Times New Roman", Times, serif;
+  // Respond to viewport width–works well since
+  // we're sizing the image according viewport height
+	font-size: 17vw; 
+	font-weight: 500;
+	letter-spacing: 1px;
+  line-height: 1.1;
+  margin: 5px 0;
+  text-align: left;
+  width: 85%;
+  
+  @media screen and (min-width:640px) {
+		font-size: 10vw;
+	}
+}
+
+.main-content {
+  height: auto;
+	padding: 30px 50px;
+	position: relative;
+  width: 60%;
+}
+
+.main-content p {
+  color: #25373D;
+  font-family: $font-serif;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+// Start Animation Tweaks
+// Need to refactory and Sassify–just proof-of-concept and testing right now
+// Basically tweaking transform, translates inside keyframes and adding delays
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-12px, 0, 0);
+    //transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-12px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+.animate {
+    animation-duration: 0.75s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.2, 0.3, 0.25, 0.9);
+}
+
+.delay {
+  animation-delay: 1s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-800 {
+  animation-delay: 0.8s;
+}
+p{
+	text-align: justify;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	float:center;
+}
+.main {
+	max-height: 550px;;
+	background-color: #292c2f;
+	color: white;
+	font-size: 38pt;
+	text-align: center;
+	line-height: 550px;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+}
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+	height:18%;
+ 
+	padding: 55px 50px;
+	margin-top: 60px;
+}
+ 
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+ 
+.footer-distributed .footer-left{
+	width: 40%;
+}
+ 
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+ 
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+ 
+ 
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+ 
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+ 
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+ 
+.footer-distributed .footer-center{
+	width: 35%;
+}
+ 
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+ 
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+ 
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+ 
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+ 
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+ 
+.footer-distributed .footer-right{
+	width: 20%;
+}
+ 
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+ 
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+ 
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+ 
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+ 
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+ 
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+ 
+ 
+@media (max-width: 880px) {
+ 
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	
+	}
+ 
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+ 
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+	.main {
+		line-height: normal;
+		font-size: auto;
+	}
+ 
+}
+img {
+  
+  border: 1px solid black;
+}
+
+
+    </style>
+</head>
+<body onload="init();">
+<header>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+
+<section class="hero image-as-background" style="background-image: url('sars.jpeg');height="42";">
+  <div class="hero-container">
+    <p class="animate fadeInLeft delay-400"></p>
+	<img src="LOG.jpeg">
+    <h1 class="hero-title animate fadeInLeft delay-600"><center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Social Distancing Checker</center></h1>
+    <h3 class="hero-title animate fadeInLeft delay-600"><center>&nbsp;&nbsp;&nbsp;ONLINE WEB BASED SOLUTION</center></h3>
+</section>
+<section class="main-content">
+  
+  <p>
+            From the beginning of 2020, a global pandemic spread among the wide population, widely known as Severe acute respiratory syndrome coronavirus 2(SARS-CoV-2), due to Corona virus has outbroke almost half of globe. The pandemic has been spreading across the globe to almost 213 countries.
+            Originated from Wuhan, a city in China, the disease has killed around 313400 and 4733858 corona positive patients which is increasing continuosly till May 2020. This fatal disease has proved to be the most dangerous pandemic across the globe by WHO (World Health Organization). Many researchers and scientists as well as doctors has been continuously putting their 
+            best efforts to save the corona infected patients. According to WHO, the disease is spreading due to coming in contact with Corona virus. The chain of infection has increasing mainly due to people who are corona infected. So, if we resist coming in contact with people can save us from corona infection. 
+            Therefore maintaining distance among population, known as Social Distancing has proved and becoming as a very effective way of prevention from the SARS-CoV-2. Ignoring physical contact among people will not only prevent you but also your family as this micro virus which cannot be viewed with naked eyes can enter your body through physical contact and ruin your healthy life. 
+            </p>
+  
+  <p> Our project, Social Distancing Checker-an online web based solution will help you detect the social distancing around you. It will capture a picture from your website and will trace your GPS location. The in-built algorithm will detect the person in the given picture and will process further to determine whether they are following social distancing or not. This will help you to not only prevent yourself but also, it will make you send the location to security or police officials to help them take care of the place where the persons involved there are not able to follow social distancing. This can save there as well as a wide people around them and their families too from being infected from Corona Virus. Even you can implement this algorithm and the project in your place such as office, shops, public places which are getting crowded in this global pandemic to find and detect whether your place is being followed by social distancing or not. </p>
+ 
+</section>
+<section>
+<!-- The buttons to control the stream -->
+<div class="button-group">
+ 
+<!--<style>
+#my_camera{
+ width: 320px;
+ height: 240px;
+ border: 1px solid black;
+ margin:0 auto;
+}
+</style>
+
+<!-- 
+ <div id="my_camera"></div>
+
+ <button onclick="configure()">Configure</button>
+ <button onclick="take_snapshot()">Take Snapshot</button>
+ <button onclick="saveSnap()">Save Snapshot</button>
+ 
+ <div id="results" ></div>-->
+ 
+ 
+</div>-->
+<h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+
+</section>
+</header>
+    	
+		<canvas id="canvas" width="640" height="480"></canvas>
+        <div class="d">
+            KEEP DISTANCE!!!<br>
+            STAY HOME!!! STAY SAFE!!!
+            </div>
+            <img src="C:/Users/Soumya/Desktop/social-distancing/pic1.jpeg" alt="Notebook" class="center" style="width:10%;">
+                <div>
+                </div>
+                <img src="C:/Users/Soumya/Desktop/social-distancing/pic2.jpeg" alt="Notebook" class="center" style="width:10%">
+                    <div>
+        
+                    </div>
+                    <img src="C:/Users/Soumya/Desktop/social-distancing/pic3.jpeg" alt="Notebook" class="center" style="width:10%">
+                        <div>
+                        </div>
+                        <img src="C:/Users/Soumya/Desktop/social-distancing/pic4.jpeg" alt="Notebook" class="center" style="width:0%">
+                            <div>
+        <a href="C:/Users/Soumya/Desktop/social-distancing/result.html" class="next">Next &raquo;</a>
+        
+        
+        <a href="C:/Users/Soumya/Desktop/social-distancing/result.html" class="next round">&#8250;</a>
+    </div>
+	
+
+
+
+    <footer class="footer-distributed">
+ 
+		<div class="footer-left">
+ 
+		<h3>Team<span>KanSoRiMa</span></h3>
+ 
+		
+ 
+		<p class="footer-company-name">Team ID:39</p>
+		</div>
+ 
+		<div class="footer-center">
+ 
+		<div>
+		<i class="fa fa-map-marker"></i>
+		<p><span>Vel Tech Rangarajan Dr. Sagunthala R& D Institute of Science<br> and Technology</span> Chennai, India</p>
+		</div>
+ 
+		<div>
+		<i class="fa fa-phone"></i>
+		
+		</div>
+ 
+		<div>
+		<i class="fa fa-envelope"></i>
+		<p><a href="mailto:support@company.com">contact@webdevtrick.com</a></p>
+		</div>
+ 
+		</div>
+ 
+		<div class="footer-right">
+ 
+		<p class="footer-company-about">
+		<span>About the team</span>
+	Rishu Raj,
+	Soumya Michael,
+	Manendra Nath Shukla
+		</p>
+ 
+		
+ 
+		</div>
+ 
+		</footer>
+ 
+
+
+
+    
+</body>
+<!-- Script 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+ 
+ <!-- Code to handle taking the snapshot and displaying it locally -->
+ <script>
+ 
+ // Configure a few settings and attach camera
+ function configure(){
+  Webcam.set({
+   width: 320,
+   height: 240,
+   image_format: 'jpeg',
+   jpeg_quality: 90
+   
+  });
+  Webcam.attach( '#my_camera' );
+ }
+ // A button for taking snaps
+
+
+ // preload shutter audio clip
+ var shutter = new Audio();
+ shutter.autoplay = true;
+ shutter.src = navigator.userAgent.match(/Chrome/) ? 'shutter.ogg' : 'shutter.mp3';
+
+ function take_snapshot() {
+  // play sound effect
+  
+
+  // take snapshot and get image data
+  Webcam.snap( function(data_uri) {
+  // display results in page
+  document.getElementById('results').innerHTML = 
+   '<img id="imageprev" src="'+data_uri+'"/>';
+  } );
+
+  Webcam.reset();
+ }
+
+function saveSnap(){
+ // Get base64 value from <img id='imageprev'> source
+ var base64image = document.getElementById("imageprev").src;
+
+ Webcam.upload( base64image, 'upload.php', function(code, text) {
+  console.log('Save successfully');
+  //console.log(text);
+ });
+
+}
+</script>-->
+</html>

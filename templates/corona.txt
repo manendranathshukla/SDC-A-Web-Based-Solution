@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>Corona Update</title>
+</head>
+<body>
+<p> Total Case :{{ total_cases }}</p>
+<p> Total Deaths :{{ total_deaths }}</p>
+<p> Total Recovered :{{ total_recovered }}</p>
+<p> New Cases :{{ new_cases }}</p>
+<p> New Deaths :{{ new_deaths }}</p>
+</body>
+</html>
