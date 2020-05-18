@@ -7,7 +7,7 @@ import numpy as np
 import time
 import cv2
 import math
-import requests
+
 
 
 UPLOAD_FOLDER = 'F:/social2/image/'
@@ -42,18 +42,7 @@ def allowed_file(filename):
 
 
 
-@app.route('/corona')
-def corona():
-    url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api"
 
-    headers = {
-    'x-rapidapi-host': "corona-virus-world-and-india-data.p.rapidapi.com",
-    'x-rapidapi-key': "5821478c33mshbe7738f83df1fddp1a99cejsn7ae8c39a8c02"
-    }
-
-    response = requests.request("GET", url, headers=headers)
-
-    print(response.text)
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
